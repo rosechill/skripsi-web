@@ -12,7 +12,7 @@ const Banner: React.FC<dataBanner> = ({
     showButton,
 }) => {
     return (
-        <div style={{ backgroundColor: color }} className=' py-8 lg:px-48 px-8 text-center flex flex-col justify-center lg:gap-8 gap-4 relative '>
+        <div style={{ backgroundColor: color }} className=' py-8 lg:px-48 px-8 text-center flex flex-col justify-center lg:gap-8 gap-4 relative min-h-[200px]'>
             <h2 className='text-white lg:text-3xl text-xl font-bold'>{title}</h2>
             <p className='text-white lg:text-lg '>{caption}</p>
             {showButton && (

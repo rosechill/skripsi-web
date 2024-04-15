@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function ServiceBodySection() {
   return (
-    <section className='bg-[#F4F3FF] lg:px-24 px-8 py-[10vh] flex flex-col lg:justify-normal  gap-12'>
+    <section className='bg-[#F4F3FF] lg:px-24 px-8 py-16 flex flex-col lg:justify-normal  gap-12'>
         {dataServiceBody.map((item, index) => (
           <div key={index} className='flex lg:flex-row flex-col  lg:gap-24 gap-8'>
               <Image
@@ -17,7 +17,7 @@ export default function ServiceBodySection() {
                 className={`lg:w-1/2 w-full  rounded-xl ${index % 2 === 0 ? 'lg:order-1 ' : ''}`}
               />
               <div className='lg:w-1/2 flex flex-col gap-4 justify-center'>
-                <h2 className='text-[#2E3E78] text-3xl font-bold'>{item.title}</h2>
+                <h2 className='text-[#2E3E78] text-2xl font-bold'>{item.title}</h2>
                 <p className='text-[#2E3E78] lg:text-start text-justify'>{item.description1}</p>
                 <p className='text-[#2E3E78] lg:text-start text-justify'>{item.description2}</p>
                 <Link href={item.pdfPath} target='_blank'>

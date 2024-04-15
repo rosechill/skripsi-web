@@ -38,3 +38,33 @@ background: #555;
 .custom-bg{
   background-image: repeating-linear-gradient(0deg, rgb(250, 250, 250) 0px, rgb(250, 250, 250) 1px,transparent 1px, transparent 21px),repeating-linear-gradient(90deg, rgb(250, 250, 250) 0px, rgb(250, 250, 250) 1px,transparent 1px, transparent 21px),linear-gradient(90deg, hsl(229,0%,100%),hsl(229,0%,100%));
 }
+
+@keyframes fade-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out-to-top {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.animate-fade-in-from-top {
+  animation: fade-in-from-top 0.5s ease-out;
+}
+
+.animate-fade-out-to-top {
+  animation: fade-out-to-top 0.5s ease-out;
+}

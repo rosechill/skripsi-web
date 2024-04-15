@@ -20,7 +20,7 @@ export default function Footer() {
           Travelxism yang menyediakan jasa konsultan, pelatihan, produksi media
           digital, dan perencanaan tur wisata yang berkelanjutan.
         </p>
-        <div className="h-[2px] bg-[#3D3D3D] w-[90%]"></div>
+        <div className="h-[2px] bg-[#929292] w-[90%]"></div>
         <p className="text-[#2E3E78] text-xs pt-4">
           Copyright © 2024 PT Gemilang Media Wisatama
         </p>
@@ -43,7 +43,7 @@ export default function Footer() {
         {dataContact.map((item, index) => (
           <div key={index}>
             <Link href={item.path} className="flex gap-2">
-              <item.icon className="min-w-[30px] text-2xl" />
+              <item.icon className="min-w-[30px] text-2xl text-[#2E3E78] " />
               <p className="text-[#2E3E78] ">{item.caption}</p>
             </Link>
           </div>
@@ -56,7 +56,7 @@ export default function Footer() {
           {dataSocmed.map((item, index) => (
             <div key={index}>
               <Link href={item.path}>
-                <item.icon className="text-3xl " />
+                <item.icon className="text-3xl text-[#2E3E78] " />
               </Link>
             </div>
           ))}

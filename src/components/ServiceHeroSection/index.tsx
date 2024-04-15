@@ -4,7 +4,7 @@ import React from "react";
 
 export default function ServiceHeroSection() {
   return (
-    <section className="lg:flex lg:mt-0 py-[10vh] custom-bg lg:h-screen ">
+    <section className="flex lg:flex-row flex-col lg:mt-0 py-[10vh] custom-bg lg:h-screen lg:justify-normal justify-center items-center">
       <div className=" flex flex-col justify-center items-center relative w-1/2 mx-24">
         <Image
           src={ServiceHero}

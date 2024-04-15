@@ -8,12 +8,12 @@ Route::get('/8633445279-staffApi', [apiController::class, 'apiStaff']);
 
 <!-- api-berita -->
 Route::get('/8633445279-beritaApi', [apiController::class, 'apiBerita']);
-Route::get('/8633445279-beritaApi/{caption}', [apiController::class, 'apiBeritaCaption']); erroor
+Route::get('/8633445279-beritaApi/{caption}', [apiController::class, 'apiBeritaCaption']);
 Route::get('/8633445279-beritaApibyId/{id}', [apiController::class, 'apiBeritaById']);
 
 <!-- api-destinasi -->
 Route::get('/8633445279-destinasiApi', [apiController::class, 'apiDestinasi']);
-Route::get('/8633445279-destinasiApi/{kategori}', [apiController::class, 'apiDestinasiKategori']);
+Route::get('/8633445279-destinasiApi/{kategori}', [apiController::class, 'apiDestinasiKategori']);      
 Route::get('/8633445279-destinasiApibyId/{id}', [apiController::class, 'apiDestinasibyId']);
 
 <!-- api-tour -->

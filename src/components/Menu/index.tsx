@@ -6,19 +6,36 @@ import Image from "next/image";
 import { Logo } from "@/assets/images";
 import ListMenu from "../ListMenu";
 import { useState } from "react";
+import { MyButton } from "../MyButton";
+import { Navbar } from "@nextui-org/react";
 
 export default function Menu() {
   const pathName = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [closingMobileMenu, setClosingMobileMenu] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    if (!mobileMenuOpen) {
+      setClosingMobileMenu(false);
+    }
+  };
+
+  const closeMobileMenu = () => {
+    setClosingMobileMenu(true);
+    setTimeout(() => {
+      setMobileMenuOpen(false);
+      setClosingMobileMenu(false);
+    }, 300);
   };
 
   return (
-    <div className="bg-[#F4F3FF] w-full fixed top-0 z-[9999999]">
+    <Navbar
+      shouldHideOnScroll
+      className="bg-[#F4F3FF] lg:w-full fixed top-0 z-50 "
+    >
       {/* lg navbar */}
-      <div className="flex justify-between items-center max-desktop:hidden h-80px">
+      <div className="flex w-full justify-between items-center max-desktop:hidden h-80px">
         <Link href={"/"}>
           <Image
             className="lg:ms-24 "
@@ -38,13 +55,13 @@ export default function Menu() {
             />
           ))}
         </ul>
-        <button className="bg-[#2E3E78] text-white px-4 py-2 rounded-lg lg:me-24  h-12 w-40">
-          Contact Us
-        </button>
+        <Link href={"/contact"} className="lg:me-24 ">
+          <MyButton color="primary"> Contact Us</MyButton>
+        </Link>
       </div>
 
       {/* Mobile navbar */}
-      <div className=" mx-8 flex justify-between items-center desktop:hidden h-[80px] ">
+      <div className=" w-full mx-8 flex justify-between items-center desktop:hidden h-[80px] ">
         <Link href={"/"}>
           <Image
             className="cursor-pointer"
@@ -56,7 +73,7 @@ export default function Menu() {
         </Link>
         <button
           className="block desktop:hidden focus:outline-none"
-          onClick={toggleMobileMenu}
+          onClick={mobileMenuOpen ? closeMobileMenu : toggleMobileMenu}
         >
           <svg
             width="40"
@@ -95,8 +112,33 @@ export default function Menu() {
         </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="lg:hidden z-[9999] w-full bg-[#F4F3FF]">
+      {closingMobileMenu && (
+        <div
+          className={`desktop:hidden  absolute top-[80px] left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-out-to-top`}
+          onAnimationEnd={() => setClosingMobileMenu(false)}
+        >
+          <div className="flex flex-col ms-6 pb-10">
+            <ul className="flex flex-col  ">
+              {dataMenu.map((item, index) => (
+                <ListMenu
+                  key={index}
+                  index={index}
+                  item={item}
+                  pathName={pathName}
+                />
+              ))}
+              <MyButton className=" bg-[#2e3e78] text-[#FCFCFC] ms-6 px-4 py-2 rounded-lg w-40 mt-4">
+                Contact Us
+              </MyButton>
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {!closingMobileMenu && mobileMenuOpen && (
+        <div
+          className={`desktop:hidden absolute top-[80px] left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-in-from-top`}
+        >
           <div className="flex flex-col ms-6 pb-10">
             <ul className="flex flex-col  ">
               {dataMenu.map((item, index) => (
@@ -114,6 +156,6 @@ export default function Menu() {
           </div>
         </div>
       )}
-    </div>
+    </Navbar>
   );
 }

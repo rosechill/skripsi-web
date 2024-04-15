@@ -1,7 +1,10 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import { Hero, LandingLeft, LandingRight, TestiLending } from "@/assets/images";
 import { IconStar } from "@/assets/icons";
+import { MyButton } from "../MyButton";
+import Link from "next/link";
 
 export default function index() {
   const stars = 5;
@@ -54,12 +57,12 @@ export default function index() {
           dan perencanaan tur wisata yang berkelanjutan.
         </h2>
         <div className="flex gap-4 lg:pb-0 pb-16">
-          <button className=" z-10 bg-[#2E3E78] text-white px-4 py-2 rounded-lg  lg:h-12 w-40  ">
-            Get Started
-          </button>
-          <button className=" z-10 bg-[#FCFCFC] border-2 border-[#2E3E78] text-[#2E3E78]  px-4 py-2 rounded-lg lg:h-12 w-40 ">
-            Explore Tour
-          </button>
+          <Link href={"/about"}>
+            <MyButton color="primary"> Get Started </MyButton>
+          </Link>
+          <Link href={"/about"}>
+            <MyButton color="secondary"> Explore Tour </MyButton>
+          </Link>
         </div>
       </div>
       <Image

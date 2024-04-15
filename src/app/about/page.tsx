@@ -1,9 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import AboutHeroSection from "@/components/AboutHeroSection";
 import VisiMisiSection from "@/components/VisiMisiSection";
 import KeunggulanSection from "@/components/KeunggulanSection";
-import PartnerSection from "@/components/TeamSection";
+import TeamSection from "@/components/TeamSection";
 
 export const metadata = {
     title: "About",
@@ -16,7 +15,7 @@ export default function About() {
         <AboutHeroSection/>
         <VisiMisiSection/>
         <KeunggulanSection/>
-        <PartnerSection/>
+        <TeamSection/>
       </section>
     );
   }

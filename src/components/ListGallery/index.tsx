@@ -1,6 +1,7 @@
 import { DataGallery } from "@/interfaces/galleryInterface";
 import satellite from "@/services/satellite";
 import { getImageGallery } from "@/utils/constant";
+import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 
 async function getGalleryData() {
@@ -26,13 +27,19 @@ export default async function ListGallery() {
           <Image
             src={getImageGallery(item.url_foto)}
             alt="gallery"
-            width={200}
-            height={200}
-            className="w-full h-[300px] object-cover rounded-xl"
+            width={400}
+            height={400}
+            className=" h-[350px] object-cover rounded-xl"
           />
-          <p className="text-center text-[#2E3E78] font-semibold pt-4">
-            {item.nama}
-          </p>
+          <Tooltip
+           showArrow={true}
+           content={item.nama}
+           className="p-4 m-4 w-[350px] bg-white text-[#2E3E78]"
+          >
+            <p className=" text-center text-[#2E3E78] font-semibold pt-4 line-clamp-1">
+              {item.nama}
+            </p>
+          </Tooltip>
         </div>
       ))}
 

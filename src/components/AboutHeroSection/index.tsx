@@ -4,7 +4,7 @@ import { AboutLanding } from "@/assets/images";
 
 export default function index() {
   return (
-    <section className="lg:flex lg:mt-0 py-[10vh] custom-bg lg:h-screen ">
+    <section className="flex lg:flex-row flex-col justify-center items-center  lg:mt-0 py-[10vh] custom-bg lg:h-screen ">
       <div className=" flex flex-col justify-center items-center relative w-1/2 mx-24">
         <Image
           src={AboutLanding}

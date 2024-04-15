@@ -14,6 +14,7 @@ import CircleBanner from './CircleBanner.png'
 import TeamVectorLeft from './TeamVectorLeft.png'
 import TeamVectorRight from './teamVectorRight.png'
 import ServiceHero from './ServiceHero.png'
+import BookTour from './BookTour.png'
 
 export{
     Logo,
@@ -32,4 +33,5 @@ export{
     TeamVectorLeft,
     TeamVectorRight,
     ServiceHero, 
+    BookTour,
 }

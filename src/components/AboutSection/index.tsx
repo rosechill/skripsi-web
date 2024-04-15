@@ -6,13 +6,13 @@ export default function index() {
   return (
     <section className="h-fit bg-[#F4F3FF]">
       <div className="lg:mx-24 flex flex-col lg:gap-28 gap-8 py-16 items-center">
-        <h1 className="lg:text-4xl text-2xl text-[#2E3E78] font-bold">Tentang Kami</h1>
+        <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold">Tentang Kami</h1>
         <div className="flex lg:flex-row flex-col relative lg:mx-0 mx-8 lg:justify-normal justify-center items-center lg:gap-4 gap-8">
           <div className="lg:w-1/2 flex  ">
             <Image src={AboutHero} alt="abouthero" width={550} height={550} />
           </div>
           <div className="lg:w-1/2 flex flex-col justify-center lg:gap-4 gap-8">
-            <h3 className="lg:text-3xl text-xl text-[#2E3E78] font-medium z-10">
+            <h3 className="lg:text-2xl text-xl text-[#2E3E78] font-medium z-10">
               Industri Pariwisata
             </h3>
             <p className=" text-[#2E3E78] z-10 lg:text-left text-justify">
