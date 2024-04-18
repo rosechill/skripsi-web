@@ -59,11 +59,11 @@ export default function ListNews() {
   }, []);
 
   return (
-    <div className="flex flex-col pt-[5vh] lg:mx-28 mx-8 justify-center  gap-8 relative">
+    <div className="flex flex-col pt-[5vh] lg:mx-24 mx-8 justify-center  gap-8 relative">
       <h1 className="text-[#2E3E78] lg:text-4xl text-2xl font-bold ">News</h1>
 
-      <div className="flex w-full gap-4 justify-between">
-        <div className="flex gap-4">
+      <div className="flex flex-row flex-wrap w-full gap-4 lg:justify-between justify-center">
+        <div className="flex lg:flex-row flex-wrap gap-4 justify-center">
           <MyButton
             color="secondary"
             onClick={() => handleCategorySelect("all")}
@@ -94,7 +94,7 @@ export default function ListNews() {
           placeholder="Search news..."
           value={searchQuery}
           onChange={handleSearchChange}
-          className="p-2 border-2 border-[#2E3E78] rounded-lg w-1/4"
+          className="p-2 border-2 border-[#2E3E78] rounded-lg lg:w-1/4 w-full lg:h-12 h-1/4"
         />  
       </div>
 
@@ -102,7 +102,7 @@ export default function ListNews() {
         {filterNewsByCategoryAndSearch(newsData).map(
           (item: DataNews, index: number) => (
             <Link href={`/news/${item.id_berita}`} key={index}>
-              <div className="w-[300px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
+              <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
                 <Image
                   src={getImageNewsDetail(item.cover)}
                   alt="gallery"

@@ -19,7 +19,7 @@ export default async function ListTeam() {
   const data = await getTeamData();
 
   return (
-    <div className="flex flex-wrap lg:px-28 py-16 px-4  justify-center gap-8 ">
+    <div className="flex flex-wrap lg:px-24 py-16 px-4  justify-center gap-8 ">
       {data?.map((item: DataTeam, index: number) => (
         <div
           key={index}
@@ -48,7 +48,7 @@ export default async function ListTeam() {
             showArrow={true}
             content={item.nama}
             placement="bottom"
-            className="p-4 w-[300px]  bg-[#2E3E78] text-white"
+            className="p-4 w-[300px] bg-[#2E3E78] text-white"
           >
             <p className="text-center text-[#828BAE]  pt-4 line-clamp-1 ">
               {item.posisi}

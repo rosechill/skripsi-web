@@ -10,8 +10,8 @@ export default function ServiceHeroSection() {
           src={ServiceHero}
           loading="lazy"
           alt="hero"
-          width={500}
-          height={500}
+          width={700}
+          height={700}
           className="py-8"
         />
       </div>

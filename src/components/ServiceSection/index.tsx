@@ -30,7 +30,9 @@ export default function index() {
           ))}
         </div>
         <Link href={"/services"}>
-          <MyButton color="primary"> Lihat Detail </MyButton>
+          <MyButton color="primary">
+            Lihat Detail
+          </MyButton>
         </Link>
       </div>
     </section>

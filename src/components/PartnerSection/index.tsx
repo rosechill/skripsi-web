@@ -31,7 +31,7 @@ export default function PartnerSection() {
         <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold lg:pb-0 pb-8">
           Partner
         </h1>
-        <div className="flex gap-12">
+        <div className="flex lg:flex-row lg:justify-center flex-wrap flex-col gap-12">
           {partnerData.map((item: DataPartner, index: number) => (
             <div key={index} className="w-[200px] flex flex-col justify-between items-center">
               <div></div>
@@ -46,7 +46,7 @@ export default function PartnerSection() {
               showArrow={true}
               placement="bottom-end"
               content={item.label}
-              className="p-4 w-[200px] bg-white text-[#2E3E78]"
+              className="p-4 w-[200px] bg-white text-[#2E3E78] text-center"
               >
                 <p className="text-[#6D78A1] w-[200px] line-clamp-1 pt-8 text-center">
                   {item.label}

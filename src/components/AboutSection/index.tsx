@@ -1,12 +1,16 @@
 import { AboutHero, AboutVector } from "@/assets/images";
 import Image from "next/image";
 import React from "react";
+import { MyButton } from "../MyButton";
+import Link from "next/link";
 
 export default function index() {
   return (
     <section className="h-fit bg-[#F4F3FF]">
       <div className="lg:mx-24 flex flex-col lg:gap-28 gap-8 py-16 items-center">
-        <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold">Tentang Kami</h1>
+        <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold">
+          Tentang Kami
+        </h1>
         <div className="flex lg:flex-row flex-col relative lg:mx-0 mx-8 lg:justify-normal justify-center items-center lg:gap-4 gap-8">
           <div className="lg:w-1/2 flex  ">
             <Image src={AboutHero} alt="abouthero" width={550} height={550} />
@@ -31,9 +35,11 @@ export default function index() {
             />
           </div>
         </div>
-        <button className=" z-10 bg-[#2E3E78] text-white  px-4 py-2 rounded-lg lg:h-12 w-40  ">
-          Lihat Detail
-        </button>
+        <Link href={"/about"}>
+          <MyButton color="primary">
+            Lihat Detail
+          </MyButton>
+        </Link>
       </div>
     </section>
   );

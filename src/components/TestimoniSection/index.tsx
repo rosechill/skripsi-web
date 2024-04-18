@@ -31,13 +31,13 @@ export default function TestimoniSection() {
         <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold lg:pb-0 pb-8">
           Testimoni
         </h1>
-        <div className="flex gap-12">
+        <div className="flex lg:flex-row lg:justify-center lg:flex-wrap flex-col gap-12">
           {testimoniData.map((item: DataTestimoni, index: number) => (
             <div
               key={index}
               className="w-[400px] flex flex-col gap-2 items-center"
             >
-              <div className="p-2 border-2 border-[#2E3E78] rounded-full">
+              <div className="p-1 border-3 border-[#2E3E78] rounded-full">
                 <Image
                   src={getImageTestimoni(item.url_foto)}
                   alt="gallery"

@@ -149,9 +149,9 @@ export default function Menu() {
                   pathName={pathName}
                 />
               ))}
-              <button className=" bg-[#2e3e78] text-[#FCFCFC] ms-6 px-4 py-2 rounded-lg w-40 mt-4">
-                Contact Us
-              </button>
+              <Link href={"/contact"} className="ms-6 pt-4">
+                <MyButton color="primary">Contact Us</MyButton>
+              </Link>
             </ul>
           </div>
         </div>

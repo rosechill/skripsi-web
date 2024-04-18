@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Tour() {
     return (
-      <section className="min-h-screen lg:mt-0 lg:py-[9vh] py-[11vh] overflow-x-hidden">
+      <section className="min-h-screen lg:mt-0 py-[9vh]  overflow-x-hidden">
         <Banner 
           title="Keep Exploring, Stay Ahead: Your Gateway to Timely Travel News and Insights." 
           caption="Uncover essential insights to guide your travel decisions and stay ahead of the curve in the dynamic world of tours and travel." 

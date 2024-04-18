@@ -1,58 +1,151 @@
 "use client";
+
 import Link from "next/link";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React from "react";
 import { MyButton } from "../MyButton";
-import { useFormState } from "react-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { Input, Textarea } from "@nextui-org/react";
+import {sendContactForm} from "@/services/lib/api"
+import { FormContact } from "@/interfaces/formContactInterface";
+import toast, { Toaster } from 'react-hot-toast'
 
-
-interface FormContact {
-    name: string,
-    phoneNumber: string, 
-    email: string, 
-    message: string
-}
+const schema = yup.object({
+  name: yup.string().required("Nama harus diisi"),
+  phoneNumber: yup.string().required("Nomor telephone harus diisi"),
+  email: yup.string().email().required("Email harus diisi"),
+  subject: yup.string().required("Subject harus diisi"),
+  message: yup.string().required("Pesan harus diisi"),
+});
 
 export default function ContactHeaderSection() {
-    // const form = useForm<FormContact>({
-    //     name: "",
-    //     phoneNumber: "",
-    //     email: "",
-    //     message: ""
-    // })
+  const notify = () => toast.success('Berhasil mengirimkan formulir');
+
+  const form = useForm<FormContact>({
+    defaultValues: {
+      name: "",
+      phoneNumber: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = form;
+
+  const buttonColor = isValid ? "primary" : "disabled"
+
+  const onSubmitted = async (data: FormContact) => {
+    const body = {
+      name: data.name,
+      phoneNumber: data.phoneNumber,
+      email: data.email,
+      subject: data.subject,
+      message: data.message,
+    };
+  
+    try {
+      await sendContactForm(body);
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        console.log('Received non-JSON response from server.');
+      } else {
+        console.error('Error submitting form:', error);
+      }
+    }
+    reset();
+  };
+
+
   return (
-    <section className="grid grid-cols-2  pt-16 mx-28">
+    <section className="grid lg:grid-cols-2 grid-cols-1 pt-16 lg:mx-24 mx-8 ">
       <div className="flex flex-col gap-8">
-        <h2 className="text-4xl text-[#2E3E78] font-semibold">
+        <h2 className="text-4xl text-[#2E3E78]  font-semibold">
           Rencana Liburan yang Brilian ?
         </h2>
-        <h3 className="w-3/4 text-[#2E3E78]">
+        <h3 className="lg:w-3/4 w-full lg:text-start text-justify text-[#2E3E78]">
           Butuh bantuan khusus untuk rencana perjalanan Anda? Hubungi tim
           dukungan kami yang ahli dan siap membantu Anda dengan segala yang Anda
-          butuhkan. Cukup hubungi kami, dan kami akan senang membantu Anda.
+          butuhkan. Kami sangat senang membantu anda.
         </h3>
         <div className="flex gap-4 lg:pb-0 pb-16">
           <Link href={"/services"}>
-            <MyButton color="primary"> Services </MyButton>
+            <MyButton color="primary"> Services</MyButton>
           </Link>
           <Link href={"/tour"}>
-            <MyButton color="secondary"> Explore Tour </MyButton>
+            <MyButton color="secondary"> Explore Tour</MyButton>
           </Link>
         </div>
       </div>
+
       {/* Form */}
-      <div className="flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit(onSubmitted)}
+        className="flex flex-col gap-2"
+      >
         <div className="flex flex-col gap-2">
-          <h2>Masukkan Nama:</h2>
-          <input
-            type="text"
-            placeholder="Test input"
-            className="border-2 border-[#2E3E78] p-2 rounded-md w-3/4"
+          <Input
+            {...register("name")}
+            label="Nama Lengkap"
+            variant="bordered"
+            className="border-[#2E3E78]"
           />
+          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">{errors.name?.message}</p>
         </div>
-        <MyButton color="primary" type="submit">
+        
+        <div className="grid grid-cols-2 gap-8">
+          <div className="flex flex-col gap-2">
+            <Input
+              {...register("phoneNumber")}
+              label="Nomor Telephone"
+              variant="bordered"
+              className="border-[#2E3E78]"
+            />
+            <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.phoneNumber?.message}</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Input
+              {...register("email")}
+              label="Email"
+              variant="bordered"
+              className="border-[#2E3E78]"
+            />
+            <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.email?.message}</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Input
+            {...register("subject")}
+            label="Subject"
+            variant="bordered"
+            className="border-[#2E3E78]"
+          />
+          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">{errors.subject?.message}</p>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Textarea
+            {...register("message")}
+            label="Masukkan pesan anda"
+            variant="bordered"
+            className="border-[#2E3E78]"
+          />
+          <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.message?.message}</p>
+        </div>
+
+        <MyButton onClick={notify} color={buttonColor} type="submit" disabled={!isValid}>
           Submit
         </MyButton>
-      </div>
+      </form>
+
+      <Toaster />
     </section>
   );
 }

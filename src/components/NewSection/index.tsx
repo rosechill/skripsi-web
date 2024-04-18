@@ -30,11 +30,11 @@ export default function NewsSection() {
   }, []);
 
   return (
-    <section className="relative  flex flex-col justify-center items-center py-16 gap-12">
+    <section className="relative flex flex-col justify-center items-center py-16 gap-12">
       <h1 className="lg:text-3xl text-2xl text-[#2E3E78] font-bold text-center ">
         Berita
       </h1>
-      <div className="flex justify-center gap-12">
+      <div className="flex lg:flex-row flex-col justify-center gap-12">
         {newsData.map((item: DataNews, index: number) => (
           <Link href={`/news/${item.id_berita}`} key={index}>
             <div className="w-[300px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">

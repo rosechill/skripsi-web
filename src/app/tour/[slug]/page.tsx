@@ -3,32 +3,15 @@ import satellite from "@/services/satellite";
 import Image from "next/image";
 import { formatCurrency, getImageSdgs, getImageTour } from "@/utils/constant";
 import { Tooltip } from "@nextui-org/react";
-import { BookTour, PeopleTour } from "@/assets/images";
+import { BookTour } from "@/assets/images";
 import { FaWhatsapp, FaWpforms } from "react-icons/fa";
 import { MyButton } from "@/components/MyButton";
 import Link from "next/link";
+import { TourDetails } from "@/interfaces/tourDetail";
 
 type SlugType = {
   params: { slug: string };
 };
-
-interface TourDetails {
-  main_image: string;
-  harga: string;
-  nama_paket: string;
-  quotes: string;
-  images: string[];
-  itineraries?: {
-    day: number | undefined;
-    isi_itinerary: string | undefined;
-    images: { [key: string]: string } | undefined;
-  }[];
-  sdgs: { path_logo: string }[];
-  include: string;
-  exclude: string;
-  what_you_get: string;
-  other_information: string;
-}
 
 export function generateMetadata({ params: { slug } }: SlugType) {
   return {
@@ -58,27 +41,27 @@ export default async function TourDetail({
   }
 
   return (
-    <section className="flex flex-col min-h-screen  mt-[9vh]">
+    <section className="flex flex-col min-h-screen mt-[9vh]">
       {/* header */}
-      <div className="mx-28 flex justify-between gap-8 my-[5vh] ">
-        <h2 className="text-[#2E3E78] text-3xl font-bold ">
+      <div className="lg:mx-24 mx-8 flex lg:flex-row flex-col justify-between lg:gap-8 gap-4 my-[5vh] ">
+        <h2 className="text-[#2E3E78] lg:text-3xl text-2xl font-bold ">
           {tourDetails.nama_paket}
         </h2>
-        <h2 className="text-[#2E3E78] text-3xl font-bold ">
+        <h2 className="text-[#2E3E78] lg:text-3xl text-2xl font-bold ">
           {formatCurrency(tourDetails.harga)}
         </h2>
       </div>
-      <div className="flex mx-28 mb-[10vh] gap-4 ">
-        <div className="w-1/2">
+      <div className="flex lg:flex-row flex-col lg:mx-24 mx-8 lg:mb-[10vh] mb-[5vh] gap-4 ">
+        <div className="lg:w-1/2 w-full">
           <Image
             src={getImageTour(tourDetails.main_image)}
             alt=""
             width={550}
             height={600}
-            className="w-full rounded-xl h-[500px] object-cover "
+            className="w-full rounded-xl lg:h-[500px] h-[250px] object-cover "
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 w-1/2 h-[500px]">
+        <div className="grid grid-cols-2 gap-4 lg:w-1/2 w-full lg:h-[500px] h-fit">
           {tourDetails.images?.map((path, index: number) => (
             <Image
               key={index}
@@ -86,7 +69,7 @@ export default async function TourDetail({
               alt=""
               width={350}
               height={600}
-              className="w-full h-[240px] rounded-xl object-cover "
+              className="w-full lg:h-[240px] h-[150px] rounded-xl object-cover "
             />
           ))}
         </div>
@@ -94,7 +77,7 @@ export default async function TourDetail({
 
       {/* qoutes */}
       <div className="bg-[#2E3E78] flex justify-center items-center min-h-[160px]">
-        <h2 className="text-white text-center text-2xl px-12">
+        <h2 className="text-white text-center lg:text-2xl px-8">
           {tourDetails.quotes}
         </h2>
       </div>
@@ -102,7 +85,7 @@ export default async function TourDetail({
       {/* Itinerary */}
       <div className="bg-[#F4F3FF]">
         {tourDetails.itineraries && (
-          <div className="mx-28 mb-[10vh] flex flex-col gap-8">
+          <div className="lg:mx-24 mx-8 lg:mb-[10vh] mb-[5vh] flex flex-col gap-8">
             <h3 className="text-[#2E3E78] text-2xl text-center font-bold mt-14">
               Itineraries
             </h3>
@@ -114,7 +97,7 @@ export default async function TourDetail({
                     <h4 className="text-[#2E3E78] text-xl font-bold mb-2">
                       Day {itinerary.day}
                     </h4>
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-wrap gap-4 justify-center">
                       {itinerary.images &&
                         Object.entries(itinerary.images).map(
                           ([nama_destinasi, imagePath], index) => (
@@ -130,7 +113,7 @@ export default async function TourDetail({
                                   alt={nama_destinasi}
                                   width={300}
                                   height={200}
-                                  className="max-w-[250px] h-[250px] rounded-xl"
+                                  className="lg:w-[250px] w-[150px] lg:h-[250px] h-[150px] rounded-xl"
                                 />
                               </Tooltip>
                             </div>
@@ -151,11 +134,11 @@ export default async function TourDetail({
       </div>
 
       {/* Sdgs */}
-      <div className="flex flex-col mx-28 gap-8 my-14">
+      <div className="flex flex-col lg:mx-24 mx-8 gap-8 lg:my-14 my-12">
         <h2 className="text-[#2E3E78] text-2xl text-center font-bold">
           Sustainable Development Goals (SDGs)
         </h2>
-        <div className="flex gap-8 justify-center">
+        <div className="flex lg:gap-8 gap-4 justify-center">
           {tourDetails.sdgs.map((sdg: { path_logo: string }, index: number) => (
             <div key={index}>
               <Image
@@ -171,29 +154,29 @@ export default async function TourDetail({
       </div>
 
       {/* information about the tour */}
-      <div className="grid grid-cols-2  gap-8 bg-[#F4F3FF] py-14 px-28">
-          <div className="p-4 bg-white rounded-xl min-h-[300px]">
+      <div className="grid sm:grid-cols-2 grid-cols-1  gap-8 bg-[#F4F3FF] py-14 lg:px-24 px-8">
+          <div className="p-4 bg-white rounded-xl lg:min-h-[300px] h-fit">
             <h2 className="text-[#2E3E78] text-2xl font-bold">Include</h2>
             <div
               className="text-[#2E3E78] text-justify pt-4"
-              dangerouslySetInnerHTML={{ __html: tourDetails.include }}
+              dangerouslySetInnerHTML={{ __html: tourDetails.include }} 
             />
           </div>
-          <div className="p-4 bg-white rounded-xl min-h-[300px]">
+          <div className="p-4 bg-white rounded-xl lg:min-h-[300px] h-fit">
             <h2 className="text-[#2E3E78] text-2xl font-bold">Exclude</h2>
             <div
               className="text-[#2E3E78] text-justify pt-4"
               dangerouslySetInnerHTML={{ __html: tourDetails.exclude }}
             />
           </div>
-          <div className="p-4 bg-white rounded-xl min-h-[300px]">
+          <div className="p-4 bg-white rounded-xl lg:min-h-[300px] h-fit">
             <h2 className="text-[#2E3E78] text-2xl font-bold">What You Get?</h2>
             <div
               className="text-[#2E3E78] text-justify pt-4"
               dangerouslySetInnerHTML={{ __html: tourDetails.what_you_get }}
             />
           </div>
-          <div className="p-4 bg-white rounded-xl min-h-[300px]">
+          <div className="p-4 bg-white rounded-xl lg:min-h-[300px] h-fit">
             <h2 className="text-[#2E3E78] text-2xl font-bold">
               Informasi Lainnya
             </h2>
@@ -207,13 +190,13 @@ export default async function TourDetail({
       </div>
 
       {/* book */}
-      <div className="mx-28 flex flex-col gap-8 py-14">
+      <div className="lg:mx-24 mx-8 flex flex-col gap-8 py-14">
         <h2 className="text-[#2E3E78] text-2xl text-center font-bold">
           Tertarik Dengan Perjalanan Ini ?
         </h2>
-        <div className="grid grid-cols-2 ">
-          <div className="flex items-center ">
-            <Image src={BookTour} alt="booktour" width={500} height={500} />
+        <div className="grid lg:grid-cols-2 lg:gap-0 gap-4 ">
+          <div className="flex items-center lg:justify-normal justify-center ">
+            <Image src={BookTour} alt="booktour" width={500} height={500} className="lg:w-[500px] w-[300px]" />
           </div>
           <div className="flex flex-col gap-4">
             <div className="bg-[#4ABD45] p-4 rounded-xl flex flex-col justify-center items-center gap-4">
@@ -231,9 +214,11 @@ export default async function TourDetail({
             <div className="bg-[#586593] p-4 rounded-xl flex flex-col justify-center items-center gap-4">
               <FaWpforms className="text-white text-6xl" />
               <h2 className="text-white">Isi form mengenai perjalanan anda</h2>
-              <MyButton color="secondary">
-                <h2>Isi Form</h2>
-              </MyButton>
+                <Link href={`/tour/${tourDetails.nama_paket}/tourForm`} >
+                <MyButton color="secondary">
+                  <h2>Isi Form</h2>
+                </MyButton>
+              </Link>
             </div>
           </div>
         </div>

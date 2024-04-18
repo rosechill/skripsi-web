@@ -60,11 +60,11 @@ export default function ListTour() {
   }, []);
 
   return (
-    <div className="flex flex-col pt-[5vh] lg:mx-28 mx-8 justify-center gap-8 relative">
+    <div className="flex flex-col pt-[5vh] lg:mx-24 mx-8 justify-center gap-8 relative">
       <h1 className="text-[#2E3E78] lg:text-4xl text-2xl font-bold">Tour</h1>
 
-      <div className="flex w-full gap-4 justify-between">
-        <div className="flex gap-4">
+      <div className="flex flex-row flex-wrap w-full gap-4 lg:justify-between justify-center">
+        <div className="flex lg:flex-row flex-wrap gap-4 justify-center">
           <MyButton color="secondary" onClick={() => handleCategorySelect(0)}>
             All
           </MyButton>
@@ -83,15 +83,15 @@ export default function ListTour() {
           placeholder="Search Tour..."
           value={searchQuery}
           onChange={handleSearchChange}
-          className="p-2 border-2 border-[#2E3E78] rounded-lg w-1/4"
+          className="p-2 border-2 border-[#2E3E78] rounded-lg lg:w-1/4 w-full lg:h-12 h-1/4"
         />
       </div>
 
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap  justify-center gap-8">
         {filterTourByCategoryAndSearch(tourData).map(
           (item: DataTour, index: number) => (
             <Link href={`/tour/${item.id_tour_package}`} key={index}>
-              <div className="w-[300px] h-[500px] shadow-lg rounded-xl flex flex-col  gap-4 will-change-transform transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-102 duration-300 ...">
+              <div className="w-[310px] h-[500px] shadow-lg rounded-xl flex flex-col  gap-4 will-change-transform transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-102 duration-300 ...">
                 <Image
                   src={getImageTour(item.main_image)}
                   alt="gallery"
