@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import ServiceHeroSection from "@/components/ServiceHeroSection";
-import ServiceBodySection from "@/components/ServiceBodySection";
-import FaqSection from "@/components/FaqSection";
+import ServiceHeroSection from "@/components/molecules/ServiceHeroSection";
+import ServiceBodySection from "@/components/molecules/ServiceBodySection";
+import FaqSection from "@/components/molecules/FaqSection";
 
 export const metadata = {
     title: "Service",

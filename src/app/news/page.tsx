@@ -1,5 +1,5 @@
-import Banner from "@/components/Banner";
-import ListNews from "@/components/ListNews";
+import Banner from "@/components/atoms/Banner";
+import ListNews from "@/components/atoms/ListNews";
 import React from "react";
 
 export const metadata = {

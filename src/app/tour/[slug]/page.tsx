@@ -5,7 +5,7 @@ import { formatCurrency, getImageSdgs, getImageTour } from "@/utils/constant";
 import { Tooltip } from "@nextui-org/react";
 import { BookTour } from "@/assets/images";
 import { FaWhatsapp, FaWpforms } from "react-icons/fa";
-import { MyButton } from "@/components/MyButton";
+import { MyButton } from "@/components/atoms/MyButton";
 import Link from "next/link";
 import { TourDetails } from "@/interfaces/tourDetail";
 

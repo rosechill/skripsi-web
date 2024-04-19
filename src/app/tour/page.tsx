@@ -1,6 +1,6 @@
 import React from "react";
-import Banner from "@/components/Banner";
-import ListTour from "@/components/ListTour";
+import Banner from "@/components/atoms/Banner";
+import ListTour from "@/components/atoms/ListTour";
 
 export const metadata = {
     title: "Tour",

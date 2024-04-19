@@ -1,4 +1,4 @@
-import FormBookTour from "@/components/FormBookTour";
+import FormBookTour from "@/components/molecules/FormBookTour";
 import React from "react";
 
 export const metadata = {

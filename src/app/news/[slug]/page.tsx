@@ -2,7 +2,7 @@ import React from "react";
 import satellite from "@/services/satellite";
 import Image from "next/image";
 import { getImageNews, getImageNewsDetail } from "@/utils/constant";
-import NewsSection from "@/components/NewSection";
+import NewsSection from "@/components/molecules/NewSection";
 
 type SlugType = {
   params: { slug: string };
