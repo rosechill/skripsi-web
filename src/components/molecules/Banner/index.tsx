@@ -4,7 +4,7 @@ import React from "react";
 import { dataBanner } from "@/interfaces/bannerInterface";
 import Image from "next/image";
 import { CircleBanner } from "@/assets/images";
-import { MyButton } from "../MyButton";
+import { MyButton } from "../../atoms/MyButton";
 import Link from "next/link";
 
 const Banner: React.FC<dataBanner> = ({

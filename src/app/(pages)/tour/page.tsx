@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "@/components/atoms/Banner";
+import Banner from "@/components/molecules/Banner";
 import ListTour from "@/components/atoms/ListTour";
 
 export const metadata = {

@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../../molecules/Menu";
-import Banner from "../../atoms/Banner";
+import Banner from "../../molecules/Banner";
 import Footer from "../../molecules/Footer";
 import ContainerProvider from "../ContainerProvider";
 export default function Container({
