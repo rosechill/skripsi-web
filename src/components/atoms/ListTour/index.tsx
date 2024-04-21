@@ -8,6 +8,7 @@ import { Tooltip } from "@nextui-org/react";
 import { DataTour } from "@/interfaces/tourInterface";
 import { formatCurrency, getImageTour } from "@/utils/constant";
 import { MyButton } from "@/components/atoms/MyButton";
+import SearchBar from "../SearchBar";
 
 async function getTourData() {
   try {
@@ -78,12 +79,9 @@ export default function ListTour() {
             Three Days
           </MyButton>
         </div>
-        <input
-          type="text"
-          placeholder="Search Tour..."
+        <SearchBar
           value={searchQuery}
           onChange={handleSearchChange}
-          className="p-2 border-2 border-[#2E3E78] rounded-lg lg:w-1/4 w-full lg:h-12 h-1/4"
         />
       </div>
 

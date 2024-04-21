@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tooltip } from "@nextui-org/react";
 import { MyButton } from "@/components/atoms/MyButton";
+import SearchBar from "../SearchBar";
 
 async function getNewsData() {
   try {
@@ -89,12 +90,9 @@ export default function ListNews() {
             Project Portfolio
           </MyButton>
         </div>
-        <input
-          type="text"
-          placeholder="Search news..."
+        <SearchBar
           value={searchQuery}
           onChange={handleSearchChange}
-          className="p-2 border-2 border-[#2E3E78] rounded-lg lg:w-1/4 w-full lg:h-12 h-1/4"
         />  
       </div>
 
