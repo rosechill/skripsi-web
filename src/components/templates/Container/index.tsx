@@ -1,8 +1,8 @@
 import React from "react";
-import Menu from "../Menu";
-import Banner from "../Banner";
-import Footer from "../Footer";
-import ContainerProvider from "../ContainerProvider";
+import Menu from "../../organisms/Menu";
+import Banner from "../../organisms/Banner";
+import Footer from "../../organisms/Footer";
+import ContainerProvider from "../../organisms/ContainerProvider";
 export default function Container({
   children,
 }: Readonly<{

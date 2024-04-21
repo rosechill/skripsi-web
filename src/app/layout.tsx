@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Container from "@/components/organisms/Container";
+import Container from "@/components/templates/Container";
 import "./globals.css";
 
 const inter = Poppins({
