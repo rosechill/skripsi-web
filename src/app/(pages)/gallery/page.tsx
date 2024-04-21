@@ -1,4 +1,4 @@
-import Banner from "@/components/molecules/Banner";
+import Banner from "@/components/organisms/Banner";
 import ListGallery from "@/components/atoms/ListGallery";
 import React from "react";
 
