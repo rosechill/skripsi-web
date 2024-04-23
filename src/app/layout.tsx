@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     template: "%s | Travelxism",
   },
   description: "Travelxism ",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">    
       <body className={inter.className}>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <Container>{children}</Container>
       </body>
     </html>
