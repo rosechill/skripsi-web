@@ -11,7 +11,7 @@ export default function ContainerProvider({
     (async () => {
       // @ts-ignore
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
+      new LocomotiveScroll();
     })();
   }, []);
   return <NextUIProvider>{children}</NextUIProvider>;

@@ -9,7 +9,7 @@ export const metadata = {
 export default function Gallery() {
  
     return (
-      <section className="min-h-screen lg:mt-0 lg:py-[9vh] py-[11vh] overflow-x-hidden">
+      <section className="min-h-screen lg:mt-0 py-[9vh] overflow-x-hidden">
         <Banner 
           title="stay ahead in the company's gallery, ensuring a competitive edge in today's evolving landscape." 
           caption="Unlock valuable insights to drive informed decisions and stay ahead of the curve in the fast-paced world of the company's gallery" 

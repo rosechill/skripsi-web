@@ -57,10 +57,10 @@ export default function index() {
           dan perencanaan tur wisata yang berkelanjutan.
         </h2>
         <div className="flex gap-4 lg:pb-0 pb-16">
-          <Link href={"/about"}>
-            <MyButton color="primary"> Get Started </MyButton>
+          <Link href={"/services"}>
+            <MyButton color="primary"> Our Services </MyButton>
           </Link>
-          <Link href={"/about"}>
+          <Link href={"/tour"}>
             <MyButton color="secondary"> Explore Tour </MyButton>
           </Link>
         </div>
