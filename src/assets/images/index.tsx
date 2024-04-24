@@ -1,5 +1,7 @@
 import Logo from './Logo.png'
 import Hero from './Hero.png'
+import LandingRight from './Landingright.png'
+import LandingLeft from './Landingleft.png'
 import TestiLending from './TestiLanding.png'
 import AboutHero from './AboutHero.png'
 import AboutVector from './AboutVector.png'
@@ -17,6 +19,8 @@ import BookTour from './BookTour.png'
 export{
     Logo,
     Hero,
+    LandingRight,
+    LandingLeft,
     TestiLending,
     AboutHero,
     AboutVector,
