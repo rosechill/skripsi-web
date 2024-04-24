@@ -14,7 +14,7 @@ import TeamVectorRight from './teamVectorRight.png'
 import ServiceHero from './ServiceHero.png'
 import BookTour from './BookTour.png'
 import LandingLeft from './LandingLeft.png'
-import LandingRight from './LandingRight.png'
+import LandingRight from './Landingright.png'
 
 export{
     Logo,
