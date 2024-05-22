@@ -68,12 +68,12 @@ export default function index() {
       <Image
         src={LandingLeft}
         alt="landing left"
-        className="absolute left-0 top-[10rem] max-desktop:hidden"
+        className="absolute left-0 top-[10rem] w-[100px] desktop:w-[300px]  "
       />
       <Image
         src={LandingRight}
         alt="landing right"
-        className="absolute right-0 top-[10rem]  max-desktop:hidden"
+        className="absolute right-0 top-[8rem] w-[300px] desktop:w-[700px] desktop:top-[10rem]"
       />
     </section>
   );

@@ -1,24 +1,24 @@
 import { DataFaq } from "@/interfaces/faqInterface";
-  
+
 export const dataFaq: DataFaq[] = [
   {
-    title: "What is Lorem Ipsum?",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "What is Tourism?",
+    description: "Tourism is the activity of traveling to a place for pleasure or exploration.",
   },
   {
-    title: "Why do we use it?",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    title: "Why Book Tourism?",
+    description: "Booking tourism packages ensures hassle-free travel experiences with accommodations, activities, and transportation arranged in advance.",
   },
   {
-    title: "Where does it come from?",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+    title: "Where Can I Explore?",
+    description: "There are countless destinations to explore worldwide, from bustling cities to serene natural landscapes.",
   },
   {
-    title: "Where can I get some?",
-    description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Where to Book?",
+    description: "Many online platforms and travel agencies offer booking services for tourism packages tailored to various preferences and budgets.",
   },
   {
-    title: "Is it safe to use Lorem Ipsum?",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "Is Tourism Sustainable?",
+    description: "Sustainable tourism aims to minimize the negative impacts on the environment and local cultures while maximizing the benefits to communities and conservation efforts.",
   },
 ];
