@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import satellite from "@/services/satellite";
 import Image from "next/image";
 import Link from "next/link";
-import { Tooltip } from "@nextui-org/react";
+import { Skeleton, Tooltip } from "@nextui-org/react";
 import { DataTour } from "@/interfaces/tourInterface";
 import { formatCurrency, getImageTour } from "@/utils/constant";
 import { MyButton } from "@/components/atoms/MyButton";
@@ -27,6 +27,7 @@ export default function ListTour() {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [tourData, setTourData] = useState<DataTour[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   async function fetchTourData() {
     const data = await getTourData();
@@ -79,10 +80,7 @@ export default function ListTour() {
             Three Days
           </MyButton>
         </div>
-        <SearchBar
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
+        <SearchBar value={searchQuery} onChange={handleSearchChange} />
       </div>
 
       <div className="flex flex-wrap  justify-center gap-8">
@@ -90,12 +88,18 @@ export default function ListTour() {
           (item: DataTour, index: number) => (
             <Link href={`/tour/${item.id_tour_package}`} key={index}>
               <div className="w-[310px] h-[500px] shadow-lg rounded-xl flex flex-col  gap-4 will-change-transform transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-102 duration-300 ...">
+                {loading && (
+                  <Skeleton>
+                    <div style={{ width: "100%", height: "250px" }} />
+                  </Skeleton>
+                )}
                 <Image
                   src={getImageTour(item.main_image)}
                   alt="gallery"
                   width={1200}
                   height={800}
                   className="w-full h-[250px] object-cover rounded-t-xl"
+                  onLoad={() => setLoading(false)} 
                 />
                 <p
                   className="text-white rounded-lg p-2 mx-8 font-semibold text-center  line-clamp-1"
@@ -124,7 +128,7 @@ export default function ListTour() {
                   </Tooltip>
                 </div>
                 <p className="text-[#2E3E78] mx-4 mb-4 font-semibold  line-clamp-1">
-                 {formatCurrency(item.harga)}
+                  {formatCurrency(item.harga)}
                 </p>
               </div>
             </Link>

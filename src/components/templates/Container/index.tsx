@@ -9,17 +9,17 @@ export default function Container({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden flex">
       <ContainerProvider>
-          <Menu />
-          <div className="">{children}</div>
-          <Banner 
-            title="Explore The World with " 
-            caption="Travelxism" 
-            color="#2E3E78"
-            showButton={true} 
-            />
-          <Footer/>
+        <Menu />
+        <div className="">{children}</div>
+        <Banner
+          title="Explore The World with "
+          caption="Travelxism"
+          color="#2E3E78"
+          showButton={true}
+        />
+        <Footer />
       </ContainerProvider>
     </div>
   );

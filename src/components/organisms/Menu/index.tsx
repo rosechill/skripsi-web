@@ -32,13 +32,14 @@ export default function Menu() {
   return (
     <Navbar
       shouldHideOnScroll
-      className="bg-[#F4F3FF] lg:w-full fixed top-0 z-50 "
+      className="bg-[#F4F3FF] fixed top-0 z-50 h-[80px] px-0"
+      maxWidth="full"
     >
       {/* lg navbar */}
-      <div className="flex w-full justify-between items-center max-desktop:hidden h-80px">
+      <div className="flex w-full items-center justify-between  max-desktop:hidden ">
         <Link href={"/"}>
           <Image
-            className="lg:ms-24 "
+            className="lg:ms-16 "
             src={Logo}
             alt="logo"
             width={200}
@@ -55,7 +56,7 @@ export default function Menu() {
             />
           ))}
         </ul>
-        <Link href={"/contact"} className="lg:me-24 ">
+        <Link href={"/contact"} className="lg:me-16 ">
           <MyButton color="primary"> Contact Us</MyButton>
         </Link>
       </div>

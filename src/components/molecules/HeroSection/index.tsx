@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Hero, LandingLeft, LandingRight, TestiLending } from "@/assets/images";
 import { IconStar } from "@/assets/icons";
 import { MyButton } from "../../atoms/MyButton";
 import Link from "next/link";
+import { Skeleton } from "@nextui-org/react";
 
 export default function index() {
   const stars = 5;
@@ -33,7 +34,7 @@ export default function index() {
               </div>
             </div>
             <div className="lg:flex lg:justify-between">
-              <Image src={TestiLending} alt="testi"/>
+              <Image src={TestiLending} alt="testi" />
               <div className="flex-col">
                 <h2 className="text-[#2E3E78] font-bold">200 +</h2>
                 <h2 className="text-[#2E3E78]">Satisfied Customer</h2>

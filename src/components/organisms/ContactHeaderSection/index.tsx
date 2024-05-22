@@ -7,9 +7,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Input, Textarea } from "@nextui-org/react";
-import {sendContactForm} from "@/services/lib/api"
+import { sendContactForm } from "@/services/lib/api";
 import { FormContact } from "@/interfaces/formContactInterface";
-import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from "react-hot-toast";
 
 const schema = yup.object({
   name: yup.string().required("Nama harus diisi"),
@@ -20,7 +20,7 @@ const schema = yup.object({
 });
 
 export default function ContactHeaderSection() {
-  const notify = () => toast.success('Berhasil mengirimkan formulir');
+  const notify = () => toast.success("Berhasil mengirimkan formulir");
 
   const form = useForm<FormContact>({
     defaultValues: {
@@ -41,7 +41,7 @@ export default function ContactHeaderSection() {
     formState: { errors, isValid },
   } = form;
 
-  const buttonColor = isValid ? "primary" : "disabled"
+  const buttonColor = isValid ? "primary" : "disabled";
 
   const onSubmitted = async (data: FormContact) => {
     const body = {
@@ -51,19 +51,18 @@ export default function ContactHeaderSection() {
       subject: data.subject,
       message: data.message,
     };
-  
+
     try {
       await sendContactForm(body);
     } catch (error) {
       if (error instanceof SyntaxError) {
-        console.log('Received non-JSON response from server.');
+        console.log("Received non-JSON response from server.");
       } else {
-        console.error('Error submitting form:', error);
+        console.error("Error submitting form:", error);
       }
     }
     reset();
   };
-
 
   return (
     <section className="grid lg:grid-cols-2 grid-cols-1 pt-16 lg:mx-24 mx-8 ">
@@ -98,9 +97,11 @@ export default function ContactHeaderSection() {
             variant="bordered"
             className="border-[#2E3E78]"
           />
-          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">{errors.name?.message}</p>
+          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">
+            {errors.name?.message}
+          </p>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-8">
           <div className="flex flex-col gap-2">
             <Input
@@ -109,7 +110,9 @@ export default function ContactHeaderSection() {
               variant="bordered"
               className="border-[#2E3E78]"
             />
-            <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.phoneNumber?.message}</p>
+            <p className="ms-3 text-xs text-red-500 min-h-[20px]">
+              {errors.phoneNumber?.message}
+            </p>
           </div>
           <div className="flex flex-col gap-2">
             <Input
@@ -118,7 +121,9 @@ export default function ContactHeaderSection() {
               variant="bordered"
               className="border-[#2E3E78]"
             />
-            <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.email?.message}</p>
+            <p className="ms-3 text-xs text-red-500 min-h-[20px]">
+              {errors.email?.message}
+            </p>
           </div>
         </div>
         <div className="flex flex-col gap-2">
@@ -128,7 +133,9 @@ export default function ContactHeaderSection() {
             variant="bordered"
             className="border-[#2E3E78]"
           />
-          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">{errors.subject?.message}</p>
+          <p className="ms-3 text-xs text-red-500 min-h-[20px] ">
+            {errors.subject?.message}
+          </p>
         </div>
         <div className="flex flex-col gap-2">
           <Textarea
@@ -137,10 +144,17 @@ export default function ContactHeaderSection() {
             variant="bordered"
             className="border-[#2E3E78]"
           />
-          <p className="ms-3 text-xs text-red-500 min-h-[20px]">{errors.message?.message}</p>
+          <p className="ms-3 text-xs text-red-500 min-h-[20px]">
+            {errors.message?.message}
+          </p>
         </div>
 
-        <MyButton onClick={notify} color={buttonColor} type="submit" disabled={!isValid}>
+        <MyButton
+          onClick={notify}
+          color={buttonColor}
+          type="submit"
+          disabled={!isValid}
+        >
           Submit
         </MyButton>
       </form>

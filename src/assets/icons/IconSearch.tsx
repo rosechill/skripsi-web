@@ -1,8 +1,8 @@
 export default function IconSearch({ width = 24, height = 24, ...props }) {
   return (
     <svg
-      width="27"
-      height="27"
+      width="18"
+      height="18"
       viewBox="0 0 27 27"
       fill="#2E3E78"
       xmlns="http://www.w3.org/2000/svg"
