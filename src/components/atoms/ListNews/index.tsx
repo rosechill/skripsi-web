@@ -6,7 +6,7 @@ import { DataNews } from "@/interfaces/newsInterface";
 import { getImageNews, getImageNewsDetail } from "@/utils/constant";
 import Image from "next/image";
 import Link from "next/link";
-import { Tooltip } from "@nextui-org/react";
+import { Skeleton, Tooltip } from "@nextui-org/react";
 import { MyButton } from "@/components/atoms/MyButton";
 import SearchBar from "../SearchBar";
 
@@ -26,6 +26,7 @@ export default function ListNews() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [newsData, setNewsData] = useState<DataNews[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   async function fetchNewsData() {
     const data = await getNewsData();
@@ -90,10 +91,7 @@ export default function ListNews() {
             Project Portfolio
           </MyButton>
         </div>
-        <SearchBar
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />  
+        <SearchBar value={searchQuery} onChange={handleSearchChange} />
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 ">
@@ -101,12 +99,18 @@ export default function ListNews() {
           (item: DataNews, index: number) => (
             <Link href={`/news/${item.id_berita}`} key={index}>
               <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
+                {loading && (
+                  <Skeleton>
+                    <div style={{ width: "100%", height: "250px" }} />
+                  </Skeleton>
+                )}
                 <Image
                   src={getImageNewsDetail(item.cover)}
                   alt="gallery"
                   width={1200}
                   height={800}
                   className="w-full h-[300px] object-cover rounded-t-xl"
+                  onLoad={() => setLoading(false)}
                 />
                 <Tooltip
                   showArrow={true}
