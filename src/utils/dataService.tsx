@@ -19,7 +19,7 @@ export const dataService: DataService[] = [
     },
     {
         imgPath: MediaProduction,
-        title: 'Konsultan',
+        title: 'Media & Production',
         caption: 'Layanan produksi media untuk menciptakan konten multimedia yang berkualitas tinggi dan menarik',
     },
 ];
