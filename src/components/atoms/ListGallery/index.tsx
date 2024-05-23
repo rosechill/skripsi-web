@@ -32,7 +32,7 @@ export default function ListGallery() {
   }, []);
 
   return (
-    <div className="flex flex-wrap lg:mx-24 mx-8 justify-between gap-8 relative">
+    <div className="flex flex-wrap lg:mx-24 mx-8 lg:justify-between justify-center gap-8 relative">
       {galleryData?.map((item: DataGallery, index: number) => (
         <div key={index} className="w-[400px] ">
           {loading && (
