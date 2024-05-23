@@ -32,7 +32,7 @@ export default function Menu() {
   return (
     <Navbar
       shouldHideOnScroll
-      className="bg-[#F4F3FF] fixed top-0 z-50 h-[80px] px-0"
+      className="bg-[#F4F3FF] fixed top-0 z-50 h-[80px] p-0"
       maxWidth="full"
     >
       {/* lg navbar */}
@@ -115,10 +115,10 @@ export default function Menu() {
 
       {closingMobileMenu && (
         <div
-          className={`desktop:hidden  absolute top-[80px] left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-out-to-top`}
+          className={`desktop:hidden  absolute top-16 left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-out-to-top`}
           onAnimationEnd={() => setClosingMobileMenu(false)}
         >
-          <div className="flex flex-col ms-6 pb-10">
+          <div className="flex flex-col ms-14 pb-10">
             <ul className="flex flex-col  ">
               {dataMenu.map((item, index) => (
                 <ListMenu
@@ -138,9 +138,9 @@ export default function Menu() {
 
       {!closingMobileMenu && mobileMenuOpen && (
         <div
-          className={`desktop:hidden absolute top-[80px] left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-in-from-top`}
+          className={`desktop:hidden absolute top-16 left-0 w-full bg-[#F4F3FF] will-change-transform animate-fade-in-from-top`}
         >
-          <div className="flex flex-col ms-6 pb-10">
+          <div className="flex flex-col ms-14 pb-10">
             <ul className="flex flex-col  ">
               {dataMenu.map((item, index) => (
                 <ListMenu

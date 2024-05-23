@@ -95,38 +95,44 @@ export default function ListNews() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 ">
-        {filterNewsByCategoryAndSearch(newsData).map(
-          (item: DataNews, index: number) => (
-            <Link href={`/news/${item.id_berita}`} key={index}>
-              <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
-                {loading && (
-                  <Skeleton>
-                    <div style={{ width: "100%", height: "250px" }} />
-                  </Skeleton>
-                )}
-                <Image
-                  src={getImageNewsDetail(item.cover)}
-                  alt="gallery"
-                  width={1200}
-                  height={800}
-                  className="w-full h-[300px] object-cover rounded-t-xl"
-                  onLoad={() => setLoading(false)}
-                />
-                <Tooltip
-                  showArrow={true}
-                  content={item.judul_berita}
-                  className="p-4 m-4 w-[280px] bg-white text-[#2E3E78]"
-                >
-                  <p className="text-[#2E3E78] font-semibold m-4  line-clamp-1">
-                    {item.judul_berita}
+        {filterNewsByCategoryAndSearch(newsData).length > 0 ? (
+          filterNewsByCategoryAndSearch(newsData).map(
+            (item: DataNews, index: number) => (
+              <Link href={`/news/${item.id_berita}`} key={index}>
+                <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
+                  {loading && (
+                    <Skeleton>
+                      <div style={{ width: "100%", height: "250px" }} />
+                    </Skeleton>
+                  )}
+                  <Image
+                    src={getImageNewsDetail(item.cover)}
+                    alt="gallery"
+                    width={1200}
+                    height={800}
+                    className="w-full h-[300px] object-cover rounded-t-xl"
+                    onLoad={() => setLoading(false)}
+                  />
+                  <Tooltip
+                    showArrow={true}
+                    content={item.judul_berita}
+                    className="p-4 m-4 w-[280px] bg-white text-[#2E3E78]"
+                  >
+                    <p className="text-[#2E3E78] font-semibold m-4  line-clamp-1">
+                      {item.judul_berita}
+                    </p>
+                  </Tooltip>
+                  <p className="text-[#6D78A1] p-4 text-xs">
+                    {item.created_at.toLocaleString()}
                   </p>
-                </Tooltip>
-                <p className="text-[#6D78A1] p-4 text-xs">
-                  {item.created_at.toLocaleString()}
-                </p>
-              </div>
-            </Link>
+                </div>
+              </Link>
+            )
           )
+        ) : (
+          <p className="text-center text-[#2E3E78] h-[40vh] font-semibold text-lg flex justify-center items-center">
+            Sorry, there is no suitable data
+          </p>
         )}
       </div>
     </div>

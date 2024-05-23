@@ -84,55 +84,61 @@ export default function ListTour() {
       </div>
 
       <div className="flex flex-wrap  justify-center gap-8">
-        {filterTourByCategoryAndSearch(tourData).map(
-          (item: DataTour, index: number) => (
-            <Link href={`/tour/${item.id_tour_package}`} key={index}>
-              <div className="w-[310px] h-[500px] shadow-lg rounded-xl flex flex-col  gap-4 will-change-transform transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-102 duration-300 ...">
-                {loading && (
-                  <Skeleton>
-                    <div style={{ width: "100%", height: "250px" }} />
-                  </Skeleton>
-                )}
-                <Image
-                  src={getImageTour(item.main_image)}
-                  alt="gallery"
-                  width={1200}
-                  height={800}
-                  className="w-full h-[250px] object-cover rounded-t-xl"
-                  onLoad={() => setLoading(false)} 
-                />
-                <p
-                  className="text-white rounded-lg p-2 mx-8 font-semibold text-center  line-clamp-1"
-                  style={{ backgroundColor: item.bg_color }}
-                >
-                  {item.duration}
-                </p>
-                <div className="flex flex-col  gap-4 min-h-[115px]">
-                  <Tooltip
-                    showArrow={true}
-                    content={item.nama_paket}
-                    className="p-4 w-[280px] bg-[#F4F3FF] text-[#2E3E78]"
+        {filterTourByCategoryAndSearch(tourData).length > 0 ? (
+          filterTourByCategoryAndSearch(tourData).map(
+            (item: DataTour, index: number) => (
+              <Link href={`/tour/${item.id_tour_package}`} key={index}>
+                <div className="w-[310px] h-[500px] shadow-lg rounded-xl flex flex-col  gap-4 will-change-transform transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-102 duration-300 ...">
+                  {loading && (
+                    <Skeleton>
+                      <div style={{ width: "100%", height: "250px" }} />
+                    </Skeleton>
+                  )}
+                  <Image
+                    src={getImageTour(item.main_image)}
+                    alt="gallery"
+                    width={1200}
+                    height={800}
+                    className="w-full h-[250px] object-cover rounded-t-xl"
+                    onLoad={() => setLoading(false)}
+                  />
+                  <p
+                    className="text-white rounded-lg p-2 mx-8 font-semibold text-center  line-clamp-1"
+                    style={{ backgroundColor: item.bg_color }}
                   >
-                    <p className="text-[#2E3E78] mx-4 font-semibold  line-clamp-1">
-                      {item.nama_paket}
-                    </p>
-                  </Tooltip>
-                  <Tooltip
-                    showArrow={true}
-                    content={item.quotes}
-                    className="p-4 w-[280px] bg-[#F4F3FF] text-[#2E3E78]"
-                  >
-                    <p className="text-[#6D78A1] mx-4  line-clamp-3">
-                      {item.quotes}
-                    </p>
-                  </Tooltip>
+                    {item.duration}
+                  </p>
+                  <div className="flex flex-col  gap-4 min-h-[115px]">
+                    <Tooltip
+                      showArrow={true}
+                      content={item.nama_paket}
+                      className="p-4 w-[280px] bg-[#F4F3FF] text-[#2E3E78]"
+                    >
+                      <p className="text-[#2E3E78] mx-4 font-semibold  line-clamp-1">
+                        {item.nama_paket}
+                      </p>
+                    </Tooltip>
+                    <Tooltip
+                      showArrow={true}
+                      content={item.quotes}
+                      className="p-4 w-[280px] bg-[#F4F3FF] text-[#2E3E78]"
+                    >
+                      <p className="text-[#6D78A1] mx-4  line-clamp-3">
+                        {item.quotes}
+                      </p>
+                    </Tooltip>
+                  </div>
+                  <p className="text-[#2E3E78] mx-4 mb-4 font-semibold  line-clamp-1">
+                    {formatCurrency(item.harga)}
+                  </p>
                 </div>
-                <p className="text-[#2E3E78] mx-4 mb-4 font-semibold  line-clamp-1">
-                  {formatCurrency(item.harga)}
-                </p>
-              </div>
-            </Link>
+              </Link>
+            )
           )
+        ) : (
+          <p className="text-center text-[#2E3E78]  h-[40vh] font-semibold text-lg flex justify-center items-center">
+            Sorry, there is no suitable data
+          </p>
         )}
       </div>
     </div>
