@@ -1,5 +1,4 @@
 import React from "react";
-
 import AboutSection from "@/components/molecules/AboutSection";
 import HeroSection from "@/components/molecules/HeroSection";
 import NewsSection from "@/components/molecules/NewSection";

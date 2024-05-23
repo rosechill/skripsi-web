@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import satellite from "@/services/satellite";
-import { DataNews } from "@/interfaces/newsInterface";
-import { getImageNews, getImageNewsDetail } from "@/utils/constant";
 import Image from "next/image";
+import satellite from "@/services/satellite";
 import Link from "next/link";
+import SearchBar from "../SearchBar";
+import { useState, useEffect } from "react";
+import { DataNews } from "@/interfaces/newsInterface";
+import { getImageNewsDetail } from "@/utils/constant";
 import { Skeleton, Tooltip } from "@nextui-org/react";
 import { MyButton } from "@/components/atoms/MyButton";
-import SearchBar from "../SearchBar";
 
 async function getNewsData() {
   try {
@@ -16,10 +16,7 @@ async function getNewsData() {
       "https://www.travelxism.com/api/8633445279-beritaApi"
     );
     return response.data;
-  } catch (error) {
-    console.log("Fail", error);
-    return [];
-  }
+  } catch (error) {}
 }
 
 export default function ListNews() {

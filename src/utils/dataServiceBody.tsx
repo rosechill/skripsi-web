@@ -25,7 +25,7 @@ export const dataServiceBody: DataServiceBody[] = [
     {
         imgPath: "medpro-img.jpg",
         pdfPath: "https://drive.google.com/file/d/1iSCsagGJTeuIyoQk01Av9Qr-4vwVMSkq/preview",
-        title: 'Konsultan',
+        title: 'Media & Production',
         description1: 'Kebutuhan branding digital sangatlah krusial dan diperlukan dalam zaman modern ini, dalam mengembangkan potensi bisnis yang dimiliki oleh masyarakat dan untuk membantu proses tersebut. Medpro menyediakan berbagai macam jasa yang sangat cocok untuk desa semua kalangan mulai dari wisata, UMKM, pengelola wisata, bahkan masyarakat umum yang ingin meningkatkan digital branding mereka dan juga menjangkau lebih banyak audience.',
         description2: 'Medpro menyediakan penawaran long and short video documentation hingga reels bagi Anda yang ingin membuat konten, mengabadikan moment, merilis company profile, hingga produksi iklan! Namun tidak hanya itu, Medpro juga menyediakan jasa design untuk brand identity Anda. Medpro juga menyediakan jasa pelatihan digitalisasi Photo dan Videography dengan modul lengkap dan juga pelatih yang kompeten dalam bidangnya, khusus untuk desa wisata paket ini sudah termasuk dengan pembuatan profil lengkap desa dan juga company profile.',
     },

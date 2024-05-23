@@ -15,10 +15,8 @@ async function getTourData() {
     const response = await satellite.get(
       "https://www.travelxism.com/api/8633445279-tourApi"
     );
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log("Fail", error);
     return [];
   }
 }

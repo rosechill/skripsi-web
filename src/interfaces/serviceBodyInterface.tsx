@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface DataServiceBody {
     imgPath: string,
     pdfPath: string,

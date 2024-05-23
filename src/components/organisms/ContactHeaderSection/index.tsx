@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import React from "react";
-import { MyButton } from "../../atoms/MyButton";
 import * as yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
+import { MyButton } from "../../atoms/MyButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Input, Textarea } from "@nextui-org/react";
 import { sendContactForm } from "@/services/lib/api";
 import { FormContact } from "@/interfaces/formContactInterface";
-import toast, { Toaster } from "react-hot-toast";
 
 const schema = yup.object({
   name: yup.string().required("Nama harus diisi"),

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import ServiceHeroSection from "@/components/molecules/ServiceHeroSection";
 import ServiceBodySection from "@/components/molecules/ServiceBodySection";
 import FaqSection from "@/components/molecules/FaqSection";

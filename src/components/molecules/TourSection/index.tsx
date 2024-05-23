@@ -1,10 +1,10 @@
 "use client";
-import { DataTour } from "@/interfaces/tourInterface";
-import satellite from "@/services/satellite";
-import { formatCurrency, getImageTour } from "@/utils/constant";
-import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import satellite from "@/services/satellite";
+import { DataTour } from "@/interfaces/tourInterface";
+import { formatCurrency, getImageTour } from "@/utils/constant";
+import { Tooltip } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { MyButton } from "../../atoms/MyButton";
 
@@ -19,7 +19,7 @@ export default function TourSection() {
         );
         setTourData(response.data);
       } catch (error) {
-        console.log("Fail", error);
+        return [];
       }
     }
 
@@ -78,7 +78,7 @@ export default function TourSection() {
         ))}
       </div>
       <Link href={"/tour"}>
-          <MyButton color="primary"> Lihat Detail </MyButton>
+        <MyButton color="primary"> Lihat Detail </MyButton>
       </Link>
     </section>
   );

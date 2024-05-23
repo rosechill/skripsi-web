@@ -1,8 +1,8 @@
 import React from "react";
 import satellite from "@/services/satellite";
 import Image from "next/image";
-import { getImageNews, getImageNewsDetail } from "@/utils/constant";
 import NewsSection from "@/components/molecules/NewSection";
+import { getImageNewsDetail } from "@/utils/constant";
 
 type SlugType = {
   params: { slug: string };
@@ -15,16 +15,16 @@ export function generateMetadata({ params: { slug } }: SlugType) {
 }
 
 async function getNewsDetails(slug: string) {
-    try {
-        const response = await satellite.get(
-        `https://www.travelxism.com/api/8633445279-beritaApibyId/${slug}`
-        );
-        return response.data;
-      } catch (error) {
-        console.log("Fail", error);
-        return [];
-      }
+  try {
+    const response = await satellite.get(
+      `https://www.travelxism.com/api/8633445279-beritaApibyId/${slug}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Fail", error);
+    return [];
   }
+}
 export default async function NewsDetails({
   params: { slug },
 }: Readonly<SlugType>) {
@@ -47,11 +47,14 @@ export default async function NewsDetails({
       </div>
       <div className="lg:mx-56 mx-8 flex flex-col ">
         <h2 className="text-[#2E3E78] lg:text-3xl text-2xl font-bold py-8">
-            {newsDetails.judul_berita}
+          {newsDetails.judul_berita}
         </h2>
-        <div className="flex flex-col text-justify lg:gap-4 gap-1" dangerouslySetInnerHTML={{ __html: newsDetails.isi_berita }} />
+        <div
+          className="flex flex-col text-justify lg:gap-4 gap-1"
+          dangerouslySetInnerHTML={{ __html: newsDetails.isi_berita }}
+        />
       </div>
-      <NewsSection/>
+      <NewsSection />
     </section>
   );
 }

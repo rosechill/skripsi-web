@@ -61,9 +61,9 @@ export default function NewsSection() {
           </Link>
         ))}
       </div>
-        <Link href={"/news"}>
-          <MyButton color="primary"> Lihat Detail </MyButton>
-        </Link>
+      <Link href={"/news"}>
+        <MyButton color="primary"> Lihat Detail </MyButton>
+      </Link>
     </section>
   );
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: "Travelxism ",
   icons: {
-    icon: '/icon.png',
+    icon: "/icon.png",
   },
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">    
+    <html lang="en">
       <body className={inter.className}>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <Container>{children}</Container>

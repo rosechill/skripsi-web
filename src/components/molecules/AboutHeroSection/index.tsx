@@ -16,7 +16,9 @@ export default function index() {
         />
       </div>
       <div className="flex flex-col justify-center lg:items-start items-center  relative lg:w-1/2 lg:me-24 gap-8 mx-8">
-        <h1 className="text-[#2E3E78] lg:text-4xl text-2xl font-bold">Tentang Kami</h1>
+        <h1 className="text-[#2E3E78] lg:text-4xl text-2xl font-bold">
+          Tentang Kami
+        </h1>
         <p className="text-[#2E3E78]  lg:text-start text-justify">
           Travelxism di bawah naungan PT. Gemilang Media Wisatama adalah sebuah
           yang didirikan sejak tahun 2019 dan berbasis di Yogyakarta, pusat

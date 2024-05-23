@@ -1,6 +1,6 @@
+import React from "react";
 import Banner from "@/components/organisms/Banner";
 import ListNews from "@/components/atoms/ListNews";
-import React from "react";
 
 export const metadata = {
     title: "News",

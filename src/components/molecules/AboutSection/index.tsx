@@ -36,9 +36,7 @@ export default function index() {
           </div>
         </div>
         <Link href={"/about"}>
-          <MyButton color="primary">
-            Lihat Detail
-          </MyButton>
+          <MyButton color="primary">Lihat Detail</MyButton>
         </Link>
       </div>
     </section>

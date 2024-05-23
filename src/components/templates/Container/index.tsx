@@ -14,7 +14,7 @@ export default function Container({
         <Menu />
         <div className="">{children}</div>
         <Banner
-          title="Explore The World with "
+          title="Explore The World With "
           caption="Travelxism"
           color="#2E3E78"
           showButton={true}

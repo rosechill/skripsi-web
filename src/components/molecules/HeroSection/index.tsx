@@ -5,7 +5,6 @@ import { Hero, LandingLeft, LandingRight, TestiLending } from "@/assets/images";
 import { IconStar } from "@/assets/icons";
 import { MyButton } from "../../atoms/MyButton";
 import Link from "next/link";
-import { Skeleton } from "@nextui-org/react";
 
 export default function index() {
   const stars = 5;

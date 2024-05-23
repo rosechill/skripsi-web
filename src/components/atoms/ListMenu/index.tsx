@@ -18,10 +18,18 @@ export default function ListMenu({
       href={item.path}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className={`flex rounded-lg  ${isHover || pathName === item.path ? "" : ""} items-center flex gap-4`}
+      className={`flex rounded-lg  ${
+        isHover || pathName === item.path ? "" : ""
+      } items-center flex gap-4`}
     >
       <li className="flex  font-medium text-[#2E3E78]">
-        <p className={`${isHover || pathName === item.path ? "bg-[#e1e7ff]  px-4 py-2 mx-2 rounded-lg" : "px-4 py-2 mx-2"}`}>
+        <p
+          className={`${
+            isHover || pathName === item.path
+              ? "bg-[#e1e7ff]  px-4 py-2 mx-2 rounded-lg"
+              : "px-4 py-2 mx-2"
+          }`}
+        >
           {item.name}
         </p>
       </li>

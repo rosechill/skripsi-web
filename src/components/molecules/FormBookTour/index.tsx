@@ -2,10 +2,10 @@
 
 import React from "react";
 import * as yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Input, Textarea } from "@nextui-org/react";
-import toast, { Toaster } from "react-hot-toast";
 import { FormTour } from "@/interfaces/formTourInterface";
 import { MyButton } from "../../atoms/MyButton";
 import { sendBookTourForm } from "@/services/lib/api";
@@ -18,8 +18,8 @@ const schema = yup.object({
     .number()
     .typeError("Jumlah orang harus berupa angka")
     .required("Jumlah orang harus diisi")
-    .min(1, 'Jumlah orang harus lebih dari 0')
-    .max(100, 'Jumlah orang harus kurang dari 100')
+    .min(1, "Jumlah orang harus lebih dari 0")
+    .max(100, "Jumlah orang harus kurang dari 100")
     .positive("Jumlah orang harus positif"),
   notes: yup.string().required("Pesan harus diisi"),
   donation: yup.boolean().required("Penggalangan dana harus diisi"),

@@ -11,7 +11,6 @@ async function getTeamData() {
     );
     return response.data;
   } catch (error) {
-    console.log("fail", error);
     return [];
   }
 }

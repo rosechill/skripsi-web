@@ -1,5 +1,5 @@
-import FormBookTour from "@/components/molecules/FormBookTour";
 import React from "react";
+import FormBookTour from "@/components/molecules/FormBookTour";
 
 export const metadata = {
   title: "Form Tour",

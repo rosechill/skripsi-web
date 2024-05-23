@@ -1,10 +1,6 @@
 "use client";
 import React from "react";
-import {
-  FaEnvelope,
-  FaLocationArrow,
-  FaPhoneAlt,
-} from "react-icons/fa";
+import { FaEnvelope, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 
 export default function ContactBodySection() {
   return (

@@ -2,7 +2,6 @@
 
 import { DataTestimoni } from "@/interfaces/testimoniInterface";
 import { getImageTestimoni } from "@/utils/constant";
-import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -46,12 +45,20 @@ export default function TestimoniSection() {
                   className="flex justify-center items-center rounded-full"
                 />
               </div>
-              <p className="text-[#2E3E78]  font-semibold h-[30px]">{item.nama}</p>
+              <p className="text-[#2E3E78]  font-semibold h-[30px]">
+                {item.nama}
+              </p>
               <p className="text-[#828BAE]   h-[30px">{item.jenis}</p>
               <div
                 className="flex flex-col text-center gap-8 px-4 text-[#2E3E78] "
                 dangerouslySetInnerHTML={{ __html: item.deskripsi }}
-                style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 6, WebkitBoxOrient: 'vertical' }}
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 6,
+                  WebkitBoxOrient: "vertical",
+                }}
               />
             </div>
           ))}

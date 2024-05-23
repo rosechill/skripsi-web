@@ -13,7 +13,6 @@ async function getGalleryData() {
     );
     return response.data;
   } catch (error) {
-    console.log("Fail", error);
     return [];
   }
 }

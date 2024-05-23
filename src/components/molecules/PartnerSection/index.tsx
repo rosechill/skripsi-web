@@ -18,7 +18,6 @@ export default function PartnerSection() {
         );
         setPartnerData(response.data);
       } catch (error) {
-        console.log("Fail", error);
         setPartnerData([]);
       }
     }
@@ -33,7 +32,10 @@ export default function PartnerSection() {
         </h1>
         <div className="flex lg:flex-row lg:justify-center flex-wrap flex-col gap-12">
           {partnerData.map((item: DataPartner, index: number) => (
-            <div key={index} className="w-[200px] flex flex-col justify-between items-center">
+            <div
+              key={index}
+              className="w-[200px] flex flex-col justify-between items-center"
+            >
               <div></div>
               <Image
                 src={getImagePartner(item.icon)}
@@ -42,11 +44,11 @@ export default function PartnerSection() {
                 height={150}
                 className="flex justify-center items-center rounded-xl"
               />
-              <Tooltip 
-              showArrow={true}
-              placement="bottom-end"
-              content={item.label}
-              className="p-4 w-[200px] bg-white text-[#2E3E78] text-center"
+              <Tooltip
+                showArrow={true}
+                placement="bottom-end"
+                content={item.label}
+                className="p-4 w-[200px] bg-white text-[#2E3E78] text-center"
               >
                 <p className="text-[#6D78A1] w-[200px] line-clamp-1 pt-8 text-center">
                   {item.label}

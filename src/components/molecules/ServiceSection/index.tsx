@@ -1,7 +1,7 @@
 import React from "react";
-import { dataService } from "@/utils/dataService";
 import Image from "next/image";
 import Link from "next/link";
+import { dataService } from "@/utils/dataService";
 import { MyButton } from "../../atoms/MyButton";
 export default function index() {
   return (
@@ -30,9 +30,7 @@ export default function index() {
           ))}
         </div>
         <Link href={"/services"}>
-          <MyButton color="primary">
-            Lihat Detail
-          </MyButton>
+          <MyButton color="primary">Lihat Detail</MyButton>
         </Link>
       </div>
     </section>
