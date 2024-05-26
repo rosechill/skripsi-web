@@ -7,8 +7,9 @@ import SearchBar from "../SearchBar";
 import { useState, useEffect } from "react";
 import { DataNews } from "@/interfaces/newsInterface";
 import { getImageNewsDetail } from "@/utils/constant";
-import { Skeleton, Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 import { MyButton } from "@/components/atoms/MyButton";
+import Loading from "../Loading";
 
 async function getNewsData() {
   try {
@@ -24,11 +25,6 @@ export default function ListNews() {
   const [newsData, setNewsData] = useState<DataNews[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
-
-  async function fetchNewsData() {
-    const data = await getNewsData();
-    setNewsData(data);
-  }
 
   function handleCategorySelect(category: string) {
     setSelectedCategory(category);
@@ -54,8 +50,23 @@ export default function ListNews() {
   }
 
   useEffect(() => {
+    const fetchNewsData = async () => {
+      try {
+        setLoading(true);
+        const data = await getNewsData();
+        setNewsData(data);
+      } catch (error) {
+        setLoading(true);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchNewsData();
   }, []);
+
+  const filteredResults = filterNewsByCategoryAndSearch(newsData);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="flex flex-col pt-[5vh] lg:mx-24 mx-8 justify-center  gap-8 relative">
@@ -92,44 +103,37 @@ export default function ListNews() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 ">
-        {filterNewsByCategoryAndSearch(newsData).length > 0 ? (
-          filterNewsByCategoryAndSearch(newsData).map(
-            (item: DataNews, index: number) => (
-              <Link href={`/news/${item.id_berita}`} key={index}>
-                <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
-                  {loading && (
-                    <Skeleton>
-                      <div style={{ width: "100%", height: "250px" }} />
-                    </Skeleton>
-                  )}
-                  <Image
-                    src={getImageNewsDetail(item.cover)}
-                    alt="gallery"
-                    width={1200}
-                    height={800}
-                    className="w-full h-[300px] object-cover rounded-t-xl"
-                    onLoad={() => setLoading(false)}
-                  />
-                  <Tooltip
-                    showArrow={true}
-                    content={item.judul_berita}
-                    className="p-4 m-4 w-[280px] bg-white text-[#2E3E78]"
-                  >
-                    <p className="text-[#2E3E78] font-semibold m-4  line-clamp-1">
-                      {item.judul_berita}
-                    </p>
-                  </Tooltip>
-                  <p className="text-[#6D78A1] p-4 text-xs">
-                    {item.created_at.toLocaleString()}
-                  </p>
-                </div>
-              </Link>
-            )
-          )
-        ) : (
-          <p className="text-center text-[#2E3E78] h-[40vh] font-semibold text-lg flex justify-center items-center">
-            Sorry, there is no suitable data
+        {!Array.isArray(filteredResults) || filteredResults.length === 0 ? (
+          <p className="text-[#2E3E78] mx-4 mt-4 font-semibold  line-clamp-1">
+            No data found
           </p>
+        ) : (
+          filteredResults.map((item: DataNews, index: number) => (
+            <Link href={`/news/${item.id_berita}`} key={index}>
+              <div className="w-[310px] shadow-lg rounded-xl flex flex-col justify-between will-change-transform transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-102 duration-300 ...">
+                <Image
+                  src={getImageNewsDetail(item.cover)}
+                  alt="gallery"
+                  width={1200}
+                  height={800}
+                  className="w-full h-[300px] object-cover rounded-t-xl"
+                  onLoad={() => setLoading(false)}
+                />
+                <Tooltip
+                  showArrow={true}
+                  content={item.judul_berita}
+                  className="p-4 m-4 w-[280px] bg-white text-[#2E3E78]"
+                >
+                  <p className="text-[#2E3E78] font-semibold m-4  line-clamp-1">
+                    {item.judul_berita}
+                  </p>
+                </Tooltip>
+                <p className="text-[#6D78A1] p-4 text-xs">
+                  {item.created_at.toLocaleString()}
+                </p>
+              </div>
+            </Link>
+          ))
         )}
       </div>
     </div>

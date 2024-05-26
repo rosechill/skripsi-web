@@ -5,6 +5,7 @@ import { getImageGallery } from "@/utils/constant";
 import { Skeleton, Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Loading from "../Loading";
 
 async function getGalleryData() {
   try {
@@ -21,24 +22,27 @@ export default function ListGallery() {
   const [galleryData, setGalleryData] = useState<DataGallery[]>([]);
   const [loading, setLoading] = useState(true);
 
-  async function fetchGalleryData() {
-    const data = await getGalleryData();
-    setGalleryData(data);
-  }
-
   useEffect(() => {
+    const fetchGalleryData = async () => {
+      try {
+        setLoading(true);
+        const data = await getGalleryData();
+        setGalleryData(data);
+      } catch (error) {
+        setLoading(true);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchGalleryData();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="flex flex-wrap lg:mx-24 mx-8 lg:justify-between justify-center gap-8 relative">
       {galleryData?.map((item: DataGallery, index: number) => (
         <div key={index} className="w-[400px] ">
-          {loading && (
-            <Skeleton>
-              <div style={{ width: "100%", height: "350px" }} />
-            </Skeleton>
-          )}
           <Image
             src={getImageGallery(item.url_foto)}
             alt="gallery"

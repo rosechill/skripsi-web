@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Container from "@/components/templates/Container";
 import "./globals.css";
+import { Suspense } from "react";
+import Loading from "@/components/atoms/Loading";
 
 const inter = Poppins({
   subsets: ["latin-ext"],
@@ -28,7 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <Container>{children}</Container>
+        <Container>
+          <Suspense fallback={<Loading />}>{children}</Suspense>
+        </Container>
       </body>
     </html>
   );
