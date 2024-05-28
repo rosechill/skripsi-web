@@ -1,12 +1,16 @@
 import React from "react";
 import Banner from "@/components/organisms/Banner";
 import ListNews from "@/components/atoms/ListNews";
+import satellite from "@/services/satellite";
 
 export const metadata = {
     title: "News",
 };
 
-export default function News() {
+export default async function News() {
+  const response = await satellite.get(
+    "https://www.travelxism.com/api/8633445279-beritaApi"
+  );
     return (
       <section className="min-h-screen lg:mt-0 py-[9vh] overflow-x-hidden">
         <Banner 
@@ -15,7 +19,7 @@ export default function News() {
           color="#DE4C47"
           showButton={false}
         />
-        <ListNews/>
+        <ListNews data = {response.data}/>
       </section>
     );
   }

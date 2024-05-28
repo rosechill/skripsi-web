@@ -1,41 +1,14 @@
 "use client";
 import { DataGallery } from "@/interfaces/galleryInterface";
-import satellite from "@/services/satellite";
 import { getImageGallery } from "@/utils/constant";
-import { Skeleton, Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loading from "../Loading";
 
-async function getGalleryData() {
-  try {
-    const response = await satellite.get(
-      "https://www.travelxism.com/api/8633445279-galleryApi"
-    );
-    return response.data;
-  } catch (error) {
-    return [];
-  }
-}
-
-export default function ListGallery() {
-  const [galleryData, setGalleryData] = useState<DataGallery[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchGalleryData = async () => {
-      try {
-        setLoading(true);
-        const data = await getGalleryData();
-        setGalleryData(data);
-      } catch (error) {
-        setLoading(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchGalleryData();
-  }, []);
+export default function ListGallery({ data }: { data: DataGallery[] }) {
+  const [galleryData] = useState<DataGallery[]>(data);
+  const [loading] = useState(false);
 
   if (loading) return <Loading />;
 
@@ -49,7 +22,6 @@ export default function ListGallery() {
             width={400}
             height={400}
             className=" h-[350px] object-cover rounded-xl"
-            onLoad={() => setLoading(false)}
           />
           <Tooltip
             showArrow={true}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { MyButton } from "../../atoms/MyButton";
@@ -12,14 +12,31 @@ import { sendContactForm } from "@/services/lib/api";
 import { FormContact } from "@/interfaces/formContactInterface";
 
 const schema = yup.object({
-  name: yup.string().required("Nama harus diisi"),
-  phoneNumber: yup.string().required("Nomor telephone harus diisi"),
-  email: yup.string().email().required("Email harus diisi"),
-  subject: yup.string().required("Subject harus diisi"),
-  message: yup.string().required("Pesan harus diisi"),
+  name: yup
+    .string()
+    .required("Nama harus diisi")
+    .min(3, "Masukkan Nama yang valid"),
+  phoneNumber: yup
+    .string()
+    .required("Nomor telephone harus diisi")
+    .min(10, "Masukkan nomor telephone yang valid"),
+  email: yup
+    .string()
+    .email()
+    .required("Email harus diisi")
+    .min(8, "Masukkan Email yang valid"),
+  subject: yup
+    .string()
+    .required("Subject harus diisi")
+    .min(5, "Masukkan Subject yang valid"),
+  message: yup
+    .string()
+    .required("Pesan harus diisi")
+    .min(5, "Masukkan Pesan yang valid"),
 });
 
 export default function ContactHeaderSection() {
+  const [loading, setLoading] = useState(false);
   const notify = () => toast.success("Berhasil mengirimkan formulir");
 
   const form = useForm<FormContact>({
@@ -53,15 +70,17 @@ export default function ContactHeaderSection() {
     };
 
     try {
+      setLoading(true);
       await sendContactForm(body);
     } catch (error) {
-      if (error instanceof SyntaxError) {
-        console.log("Received non-JSON response from server.");
-      } else {
-        console.error("Error submitting form:", error);
-      }
+      throw error
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+        reset();
+        notify();
+      }, 3000);
     }
-    reset();
   };
 
   return (
@@ -150,10 +169,10 @@ export default function ContactHeaderSection() {
         </div>
 
         <MyButton
-          onClick={notify}
           color={buttonColor}
           type="submit"
           disabled={!isValid}
+          isLoading={loading}
         >
           Submit
         </MyButton>

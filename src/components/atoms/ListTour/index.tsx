@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import satellite from "@/services/satellite";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Tooltip } from "@nextui-org/react";
@@ -11,22 +10,11 @@ import { MyButton } from "@/components/atoms/MyButton";
 import SearchBar from "../SearchBar";
 import Loading from "../Loading";
 
-async function getTourData() {
-  try {
-    const response = await satellite.get(
-      "https://www.travelxism.com/api/8633445279-tourApi"
-    );
-    return response.data;
-  } catch (error) {
-    return [];
-  }
-}
-
-export default function ListTour() {
+export default function ListTour({ data }: { data: DataTour[] }) {
   const [selectedCategory, setSelectedCategory] = useState(0);
-  const [tourData, setTourData] = useState<DataTour[]>([]);
+  const [tourData] = useState<DataTour[]>(data);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(false);
 
   function handleCategorySelect(category: number) {
     setSelectedCategory(category);
@@ -50,21 +38,6 @@ export default function ListTour() {
     }
     return filteredTour;
   }
-
-  useEffect(() => {
-    const fetchTourData = async () => {
-      try {
-        setLoading(true);
-        const data = await getTourData();
-        setTourData(data);
-      } catch (error) {
-        setLoading(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTourData();
-  }, []);
 
   const filteredResults = filterTourByCategoryAndSearch(tourData);
 

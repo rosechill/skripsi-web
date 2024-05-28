@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,7 +12,10 @@ import { sendBookTourForm } from "@/services/lib/api";
 
 const schema = yup.object({
   subject: yup.string().required("Subject harus diisi"),
-  name: yup.string().required("Nama harus diisi"),
+  name: yup
+    .string()
+    .required("Nama harus diisi")
+    .min(3, "Masukkan nama yang valid"),
   email: yup.string().email("Email tidak valid").required("Email harus diisi"),
   people: yup
     .number()
@@ -27,6 +30,7 @@ const schema = yup.object({
 
 export default function FormBookTour({ decodedSlug }: { decodedSlug: string }) {
   const notify = () => toast.success("Berhasil mengirimkan formulir");
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<FormTour>({
     defaultValues: {
@@ -61,13 +65,16 @@ export default function FormBookTour({ decodedSlug }: { decodedSlug: string }) {
     };
 
     try {
+      setLoading(true);
       await sendBookTourForm(body);
     } catch (error) {
-      if (error instanceof SyntaxError) {
-        console.log("Received non-JSON response from server.");
-      } else {
-        console.error("Error submitting form:", error);
-      }
+      throw error;
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+        reset();
+        notify();
+      }, 3000);
     }
     reset();
   };
@@ -184,8 +191,8 @@ export default function FormBookTour({ decodedSlug }: { decodedSlug: string }) {
         </div>
 
         <MyButton
-          onClick={notify}
           color={buttonColor}
+          isLoading={loading}
           type="submit"
           disabled={!isValid}
           className="mt-4"

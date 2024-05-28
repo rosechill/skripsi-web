@@ -1,30 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import satellite from "@/services/satellite";
 import Link from "next/link";
 import SearchBar from "../SearchBar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DataNews } from "@/interfaces/newsInterface";
 import { getImageNewsDetail } from "@/utils/constant";
 import { Tooltip } from "@nextui-org/react";
 import { MyButton } from "@/components/atoms/MyButton";
 import Loading from "../Loading";
 
-async function getNewsData() {
-  try {
-    const response = await satellite.get(
-      "https://www.travelxism.com/api/8633445279-beritaApi"
-    );
-    return response.data;
-  } catch (error) {}
-}
-
-export default function ListNews() {
+export default function ListNews({ data }: { data: DataNews[] }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [newsData, setNewsData] = useState<DataNews[]>([]);
+  const [newsData] = useState<DataNews[]>(data);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(false);
 
   function handleCategorySelect(category: string) {
     setSelectedCategory(category);
@@ -48,21 +38,6 @@ export default function ListNews() {
     }
     return filteredNews;
   }
-
-  useEffect(() => {
-    const fetchNewsData = async () => {
-      try {
-        setLoading(true);
-        const data = await getNewsData();
-        setNewsData(data);
-      } catch (error) {
-        setLoading(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchNewsData();
-  }, []);
 
   const filteredResults = filterNewsByCategoryAndSearch(newsData);
 
@@ -117,7 +92,6 @@ export default function ListNews() {
                   width={1200}
                   height={800}
                   className="w-full h-[300px] object-cover rounded-t-xl"
-                  onLoad={() => setLoading(false)}
                 />
                 <Tooltip
                   showArrow={true}
